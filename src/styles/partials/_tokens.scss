@@ -1,0 +1,128 @@
+:root {
+  --t: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg-transition: 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* human tokens */
+  --human-bg: #F5F0E8;
+  --human-fg: #1a1a18;
+  --human-muted: #5a5a52;
+  --human-subtle: #a0a098;
+  --human-faint: #c0bab0;
+  --human-wip-bg: #ede8dc;
+  --human-wip-fg: #a0988a;
+  --human-wip-border: #d8d0c0;
+
+  /* robot tokens */
+  --robot-bg: #030a03;
+  --robot-fg: #00cc44;
+  --robot-bright: #00ff55;
+  --robot-mid: #00aa33;
+  --robot-dim: #007a25;
+  --robot-dark: #005518;
+  --robot-darker: #004410;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  background-color: var(--human-bg);
+  color: var(--human-fg);
+  font-family: 'DM Sans', sans-serif;
+  transition: background-color var(--bg-transition), color var(--t);
+
+  /* mode-driven custom properties (human defaults) */
+  --name-font: 'DM Serif Display', serif;
+  --name-style: italic;
+  --name-size: clamp(2.8rem, 6vw, 4.5rem);
+  --name-spacing: -0.02em;
+  --name-color: inherit;
+  --name-overflow: visible;
+
+  --tagline-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  --tagline-color: #474741;
+  --tagline-lh: 1.65;
+  --tagline-spacing: normal;
+
+  --label-color: #505048;
+  --label-font: 'DM Mono', monospace;
+  --label-size: 0.62rem;
+  --label-spacing: 0.12em;
+
+  --num-color: #505048;
+  --num-font: 'DM Mono', monospace;
+  --num-size: 0.62rem;
+
+  --link-size: 0.92rem;
+
+  --desc-color: #474741;
+  --desc-size: 0.78rem;
+
+  --wip-bg: var(--human-wip-bg);
+  --wip-color: #474741;
+  --wip-border: var(--human-wip-border);
+
+  --contact-size: 0.8rem;
+  --contact-color: #474741;
+}
+
+/* ── ROBOT MODE ── */
+body.mode-robot {
+  background-color: var(--robot-bg);
+  color: var(--robot-fg);
+  font-family: 'DM Mono', monospace;
+
+  --name-font: 'Press Start 2P', cursive;
+  --name-style: normal;
+  --name-size: 0.75rem;
+  --name-spacing: 0.04em;
+  --name-color: var(--robot-bright);
+  --name-overflow: hidden;
+
+  --tagline-size: 0.73rem;
+  --tagline-color: var(--robot-fg);
+  --tagline-lh: 1.95;
+  --tagline-spacing: 0.02em;
+
+  --label-color: var(--robot-fg);
+  --label-font: 'Press Start 2P', cursive;
+  --label-size: 0.5rem;
+  --label-spacing: 0.2em;
+
+  --num-color: var(--robot-fg);
+  --num-font: 'Press Start 2P', cursive;
+  --num-size: 0.5rem;
+
+  --link-size: 0.76rem;
+
+  --desc-color: var(--robot-fg);
+  --desc-size: 0.7rem;
+
+  --wip-bg: transparent;
+  --wip-color: var(--robot-dark);
+  --wip-border: var(--robot-darker);
+
+  --contact-size: 0.7rem;
+  --contact-color: var(--robot-fg);
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.07) 2px,
+      rgba(0, 0, 0, 0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+}

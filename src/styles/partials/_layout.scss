@@ -1,0 +1,34 @@
+main,
+.switcher,
+.footer-note {
+  position: relative;
+  z-index: 1;
+}
+
+main {
+  max-width: 500px;
+  width: 100%;
+}
+
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  body {
+    justify-content: flex-end;
+    padding: 2rem 1.75rem;
+    gap: 7rem;
+  }
+}
+
+/* ── DESKTOP ── */
+@media (min-width: 768px) {
+  body {
+    align-items: center;
+  }
+}

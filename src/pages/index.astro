@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import ModeSwitcher from '../components/ModeSwitcher.astro';
+import Name from '../components/Name.astro';
+import Tagline from '../components/Tagline.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import { COPY } from '../content';
+
+const human = COPY.human;
+const robot = COPY.robot;
+---
+
+<Base>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <div class="page-layout">
+    <main id="main-content">
+      <Name name="Aleks Linde" />
+      <Tagline text={human.tagline} />
+
+      <Projects
+        label={human.projectsLabel}
+        projects={human.projects}
+      />
+
+      <Contact
+        linkedin="https://www.linkedin.com/in/iamalexlinde"
+        github="https://github.com/alekslinde"
+        labels={human.contact}
+      />
+    </main>
+
+  </div>
+  <footer class="footer-controls">
+    <p class="footer-note" id="footer-note">{human.footerNote}</p>
+    <ModeSwitcher />
+  </footer>
+
+  
+</Base>
+
+<script>
+  import { COPY } from '../content';
+  import { initModeController } from '../components/ModeController';
+
+  const realName = 'Aleks Linde';
+  const { toggle } = initModeController(
+    {
+      nameEl:        document.getElementById('name-text')!,
+      tagline:       document.getElementById('tagline')!,
+      projectsLabel: document.getElementById('projects-label')!,
+      p1num:         document.querySelector('[data-index="0"]') as HTMLElement,
+      proj1Name:     document.querySelector('[data-proj-name="0"]') as HTMLElement,
+      proj1Desc:     document.querySelector('[data-proj-desc="0"]') as HTMLElement,
+      p2num:         document.querySelector('[data-index="1"]') as HTMLElement,
+      proj2Name:     document.querySelector('[data-proj-name="1"]') as HTMLElement,
+      proj2Wip:      document.querySelector('[data-proj-wip="1"]') as HTMLElement | null,
+      emailLink:     document.getElementById('email-link')!,
+      liLink:        document.getElementById('li-link')!,
+      ghLink:        document.getElementById('gh-link')!,
+      footerNote:    document.getElementById('footer-note')!,
+    },
+    COPY,
+    realName
+  );
+
+  document.getElementById('btn-human')?.addEventListener('click', toggle);
+</script>

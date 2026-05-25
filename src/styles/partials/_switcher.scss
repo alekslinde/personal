@@ -1,0 +1,74 @@
+.switcher {
+  position: static;
+  display: flex;
+  flex-shrink: 0;
+  z-index: 100;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    transition: background var(--t), color var(--t);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+body.mode-human .switcher button {
+  background: var(--human-fg);
+  color: var(--human-bg);
+}
+
+body.mode-robot .switcher button {
+  background: var(--robot-fg);
+  color: var(--robot-bg);
+}
+
+.toggle-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+
+  svg {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.2s;
+  }
+}
+
+.icon-human {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.mode-robot .icon-human {
+  opacity: 1;
+}
+
+body.mode-robot .icon-robot {
+  opacity: 0;
+}
+
+body.mode-human .icon-robot {
+  opacity: 1;
+}
+
+body.mode-human .icon-human {
+  opacity: 0;
+}

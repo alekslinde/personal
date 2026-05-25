@@ -1,0 +1,40 @@
+---
+export interface Project {
+  num: string;
+  name: string;
+  desc: string;
+  url?: string;
+  wip?: boolean;
+  wipLabel?: string;
+}
+
+interface Props {
+  label: string;
+  projects: Project[];
+}
+
+const { label, projects } = Astro.props;
+---
+
+<div class="projects">
+  <h2 class="projects-label" id="projects-label">{label}</h2>
+
+  <ul class="project-list">
+    {projects.map((p, i) => (
+      <li class="project-item">
+      <span class="project-num" data-index={i}>{p.num}</span>
+      {p.url ? (
+        <a href={p.url} target="_blank" rel="noopener noreferrer" class="project-link">
+          <span data-proj-name={i}>{p.name}</span>
+          <span class="project-desc" data-proj-desc={i}>{p.desc}</span>
+        </a>
+      ) : (
+        <span class="project-link" style="cursor:default;">
+          <span data-proj-name={i}>{p.name}</span>
+          {p.wip && <span class="project-wip" data-proj-wip={i}>{p.wipLabel ?? 'soon'}</span>}
+        </span>
+      )}
+      </li>
+    ))}
+  </ul>
+</div>

@@ -1,0 +1,35 @@
+.footer-controls {
+  position: fixed;
+  max-width: 500px;
+  bottom: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  box-sizing: border-box;
+
+  .switcher {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .switcher {
+      margin-left: 0;
+      align-self: flex-end;
+    }
+  }
+}
+
+.footer-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: #505048;
+  transition: color var(--t);
+}
+
+body.mode-robot .footer-note {
+  color: var(--robot-fg);
+}

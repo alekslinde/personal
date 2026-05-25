@@ -1,0 +1,40 @@
+:focus-visible {
+  outline: 3px solid var(--human-fg);
+  outline-offset: 3px;
+}
+
+body.mode-robot :focus-visible {
+  outline-color: var(--robot-bright);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: var(--human-fg);
+  color: var(--human-bg);
+  font-size: 0.875rem;
+  z-index: 10000;
+  text-decoration: none;
+  transition: top var(--t);
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

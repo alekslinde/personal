@@ -1,0 +1,9 @@
+.tagline {
+  line-height: var(--tagline-lh);
+  max-width: 500px;
+  margin-bottom: 2.75rem;
+  font-size: var(--tagline-size);
+  color: var(--tagline-color);
+  letter-spacing: var(--tagline-spacing);
+  transition: color var(--t), font-size var(--t);
+}

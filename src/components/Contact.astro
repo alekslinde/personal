@@ -1,0 +1,33 @@
+---
+interface Props {
+  linkedin: string;
+  github: string;
+  labels: { email: string; linkedin: string; github: string };
+}
+const { linkedin, github, labels } = Astro.props;
+---
+
+<div class="contact">
+  <!-- email assembled by JS to defeat crawlers -->
+  <a href="#" id="email-link" aria-label="Email Aleks Linde">{labels.email}</a>
+  <span class="contact-sep">·</span>
+  <a href={linkedin} target="_blank" rel="noopener noreferrer" id="li-link" aria-label="Aleks Linde on LinkedIn">{labels.linkedin}</a>
+  <span class="contact-sep">·</span>
+  <a href={github} target="_blank" rel="noopener noreferrer" id="gh-link" aria-label="Aleks Linde on GitHub">{labels.github}</a>
+</div>
+
+<script>
+  // Obfuscated — never in HTML source
+  const u = 'iamalexlinde';
+  const d = 'gmail.com';
+  const el = document.getElementById('email-link') as HTMLAnchorElement;
+  if (el) {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'mailto:' + u + '\x40' + d;
+    });
+    el.addEventListener('mouseover', () => {
+      el.title = u + '\x40' + d;
+    });
+  }
+</script>

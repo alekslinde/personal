@@ -1,0 +1,26 @@
+.contact {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+
+  a {
+    font-size: var(--contact-size);
+    text-decoration: none;
+    color: var(--contact-color);
+    transition: color 0.2s;
+  }
+
+  body.mode-human & a:hover {
+    color: var(--human-fg);
+  }
+
+  body.mode-robot & a:hover {
+    color: var(--robot-bright);
+  }
+}
+
+.contact-sep {
+  opacity: 0.2;
+  font-size: 0.65rem;
+}
