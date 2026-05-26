@@ -25,7 +25,7 @@
   }
 }
 
-body.mode-human .switcher button:hover {
+body:not(.mode-robot) .switcher button:hover {
   background: var(--human-fg);
   color: #ffffff;
 }
