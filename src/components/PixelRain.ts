@@ -56,9 +56,7 @@ export function startPixelRain(canvas: HTMLCanvasElement): () => void {
   let running = true;
 
   function animate() {
-    // Clear canvas
-    ctx.fillStyle = 'rgba(3, 10, 3, 0)';
-    ctx.fillRect(0, 0, width, height);
+    ctx.clearRect(0, 0, width, height);
 
     // Update and draw raindrops
     raindrops.forEach((drop) => {
