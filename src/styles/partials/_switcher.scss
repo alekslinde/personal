@@ -25,18 +25,19 @@
   }
 }
 
-body.mode-human .switcher button {
+body.mode-human .switcher button:hover {
   background: var(--human-fg);
-  color: var(--human-bg);
+  color: #ffffff;
 }
 
-body.mode-robot .switcher button {
-  background: var(--robot-fg);
-  color: var(--robot-bg);
+body.mode-robot .switcher button:hover {
+  background: var(--human-bg);
+  color: var(--human-fg);
 }
 
 .toggle-icon {
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;

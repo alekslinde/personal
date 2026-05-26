@@ -8,7 +8,12 @@
     font-size: var(--contact-size);
     text-decoration: none;
     color: var(--contact-color);
-    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover {
+      border-bottom-color: currentColor;
+    }
   }
 
   body.mode-human & a:hover {

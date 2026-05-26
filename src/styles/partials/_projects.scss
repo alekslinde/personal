@@ -37,12 +37,15 @@
   font-weight: 400;
   text-decoration: none;
   color: inherit;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
   display: flex;
   align-items: baseline;
   gap: 0.7rem;
   flex-wrap: wrap;
+}
+
+a.project-link {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
 
   &:hover {
     border-bottom-color: currentColor;

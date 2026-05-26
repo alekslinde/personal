@@ -27,3 +27,82 @@
     </svg>
   </span></button>
 </nav>
+
+<script>
+  const btn = document.getElementById('btn-human') as HTMLButtonElement;
+
+  const canvas = document.createElement('canvas');
+  Object.assign(canvas.style, {
+    position: 'absolute',
+    inset: '0',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+    opacity: '0',
+    transition: 'opacity 0.25s',
+  });
+  btn.style.position = 'relative';
+  btn.style.overflow = 'hidden';
+  btn.appendChild(canvas);
+
+  const PIXEL = 1, COL_W = 3;
+
+  const SPEED = [1.2, 2.5];
+  const C = { bright: '#00cc44', mid: '#00aa33', dim: '#008822' };
+  const FADE = 15, SPAWN = 0.45;
+
+  interface Drop { x: number; y: number; age: number; }
+  interface Col  { x: number; headY: number; speed: number; drops: Drop[]; }
+
+  let cols: Col[] = [];
+  let rafId = 0, active = false;
+
+  btn.addEventListener('mouseenter', () => {
+    if (document.body.classList.contains('mode-robot')) return;
+
+    const [sMin, sMax] = SPEED;
+    canvas.width  = btn.offsetWidth;
+    canvas.height = btn.offsetHeight;
+    const n = Math.ceil(canvas.width / COL_W);
+    cols = Array.from({ length: n }, (_, i) => ({
+      x: i * COL_W + (COL_W - PIXEL) / 2,
+      headY: Math.random() * canvas.height,
+      speed: sMin + Math.random() * (sMax - sMin),
+      drops: [],
+    }));
+
+    active = true;
+    canvas.style.opacity = '0.6';
+
+    function tick() {
+      if (!active) return;
+      const ctx = canvas.getContext('2d')!;
+      const { width: w, height: h } = canvas;
+      ctx.clearRect(0, 0, w, h);
+
+      for (const col of cols) {
+        col.headY += col.speed;
+        if (col.headY > h) { col.headY = 0; col.speed = sMin + Math.random() * (sMax - sMin); }
+        if (Math.random() < SPAWN) col.drops.push({ x: col.x, y: col.headY, age: 0 });
+        col.drops = col.drops.filter(d => d.age < FADE);
+        for (const d of col.drops) {
+          const p = d.age / FADE;
+          const color = p < 0.15 ? C.bright : p < 0.4 ? C.mid : C.dim;
+          const a = Math.round(Math.max(0, 1 - p) * 255).toString(16).padStart(2, '0');
+          ctx.fillStyle = color + a;
+          ctx.fillRect(d.x, d.y, PIXEL, PIXEL);
+          d.age++;
+        }
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+
+    rafId = requestAnimationFrame(tick);
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    active = false;
+    cancelAnimationFrame(rafId);
+    canvas.style.opacity = '0';
+  });
+</script>
