@@ -11,6 +11,12 @@ export const COPY = {
       },
       {
         num: '.02',
+        name: 'Just Checking, Mate',
+        desc: "Australia's no-nonsense scam detector",
+        url: 'https://justcheckingmate.com',
+      },
+      {
+        num: '.03',
         name: 'more things brewing',
         desc: '',
         wip: true,
@@ -32,6 +38,12 @@ export const COPY = {
       },
       {
         num: 'P02',
+        name: 'justcheckingmate.com',
+        desc: '// type:tool  status:DEPLOYED  target:AU',
+        url: 'https://justcheckingmate.com',
+      },
+      {
+        num: 'P03',
         name: 'REDACTED',
         desc: '',
         wip: true,

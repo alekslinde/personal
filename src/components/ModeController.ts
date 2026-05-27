@@ -12,6 +12,7 @@ export interface ModeElements {
   proj1Desc: HTMLElement;
   p2num: HTMLElement;
   proj2Name: HTMLElement;
+  proj2Desc: HTMLElement;
   proj2Wip: HTMLElement | null;
   emailLink: HTMLElement;
   liLink: HTMLElement;
@@ -107,6 +108,7 @@ export function initModeController(
       { el: els.proj1Desc, val: c.projects[0].desc },
       { el: els.p2num, val: c.projects[1].num },
       { el: els.proj2Name, val: c.projects[1].name },
+      { el: els.proj2Desc, val: c.projects[1].desc },
       { el: els.proj2Wip, val: c.projects[1].wipLabel ?? '' },
       { el: els.emailLink, val: c.contact.email },
       { el: els.liLink, val: c.contact.linkedin },
