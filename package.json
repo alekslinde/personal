@@ -5,14 +5,24 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "astro": "^6.3.7"
   },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead",
+    "not IE 11"
+  ],
   "devDependencies": {
     "autoprefixer": "^10.5.0",
+    "jsdom": "^26.0.0",
     "playwright": "^1.60.0",
-    "sass": "^1.100.0"
+    "sass": "^1.100.0",
+    "vitest": "^3.0.0"
   }
 }
